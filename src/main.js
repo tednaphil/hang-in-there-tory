@@ -1,4 +1,8 @@
 // query selector variables go here 👇
+var posterImage = document.querySelector('.poster-img');
+var posterTitle = document.querySelector('.poster-title');
+var posterQuote = document.querySelector('.poster-quote');
+var newRandomPoster = document.querySelector('.show-random');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -102,17 +106,37 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
+//on click, re
+newRandomPoster.addEventListener('click', makeRandomPoster);
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
+  return Math.floor(Math.random() * array.length)
+};
 
 function createPoster(imageURL, title, quote) {
   return {
     id: Date.now(), 
     imageURL: imageURL, 
     title: title, 
-    quote: quote}
-}
+    quote: quote
+  }
+};
+
+function makeRandomPoster() {
+  var randomImage = images[getRandomIndex(images)];
+  var randomTitle = titles[getRandomIndex(titles)];
+  var randomQuote = quotes[getRandomIndex(quotes)];
+  posterQuote.innerHTML = randomQuote;
+  posterTitle.innerHTML = randomTitle;
+  posterImage.src = randomImage;
+};
+
+makeRandomPoster();
+
+posterImage.alt = 'Motivational Poster Image';
+
+
+
+
