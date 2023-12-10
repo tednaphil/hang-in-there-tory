@@ -206,11 +206,11 @@ function switchToMain() {
   savedPostersSection.classList.add('hidden');
 };
 
-savedPostersGrid.innerHTML = `
-  <div class="mini-poster saved-posters-grid"> </div>
-  `;
+// savedPostersGrid.innerHTML = `
+//   <div class="mini-poster saved-posters-grid"> </div>
+//   `;
   
-var miniPosters = document.querySelector('.mini-poster');
+// var miniPosters = document.querySelector('.mini-poster');
 
 
 function savePoster() {
@@ -224,7 +224,7 @@ function savePoster() {
       if (arrayCheck === undefined) {
         console.log('arrayCheck result: ', arrayCheck)
         savedPosters.push(currentPoster);
-        miniPosters.insertAdjacentHTML('afterbegin', `
+        savedPostersGrid.insertAdjacentHTML('afterbegin', `
           <div class="mini-poster">
             <img src="${currentPoster.imageURL}" alt="motivational poster image">
             <h2>${currentPoster.title}</h2>
