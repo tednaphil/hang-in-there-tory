@@ -211,7 +211,7 @@ function savePoster() {
       if (arrayCheck === undefined) {
         savedPosters.push(currentPoster);
         savedPostersGrid.insertAdjacentHTML('afterbegin', `
-          <div class="mini-poster">
+          <div class="mini-poster" id=${currentPoster.id}>
             <img src="${currentPoster.imageURL}" alt="motivational poster image">
             <h2>${currentPoster.title}</h2>
             <h4>${currentPoster.quote}</h4>
@@ -219,6 +219,30 @@ function savePoster() {
           `)
       };
 };
+
+
+// var savedPostersGridClicked = e => {
+//   var isMiniPoster = e.target.nodeName === 'section';
+//   if(!isMiniPoster) { 
+//     console.log('target id: ', e.target.id)  
+//     return e.target.id
+//   } else {
+//   // var selectedPosterId = e.target.id
+//   console.log('clicked element id:', e.target.id);
+//   return e.target.id}
+// }
+
+function savedPostersGridClicked() {
+  // function(e)
+  if (e.target.hasAttribute('id')) {
+    return 
+  }
+  console.log(e.target.getAttribute('id'))
+}
+
+savedPostersGrid.addEventListener('click', savedPostersGridClicked)
+
+// var selectedPosterId =
   
 // create a function that will
 //1. declare a variable that stores the id of the selected poster
