@@ -182,7 +182,6 @@ function makeRandomPoster() {
   posterTitle.innerHTML = randomTitle;
   posterImage.src = randomImage;
   currentPoster = createPoster(randomImage, randomTitle, randomQuote);
-  // console.log('currentPoster: ', currentPoster)
 };
 
 
@@ -206,25 +205,12 @@ function switchToMain() {
   savedPostersSection.classList.add('hidden');
 };
 
-savedPostersGrid.innerHTML = `
-  <div class="mini-poster saved-posters-grid"> </div>
-  `;
-  
-var miniPosters = document.querySelector('.mini-poster');
-
 
 function savePoster() {
-  // savedPosters.forEach((object) => if (currentPoster.id !== object.id) {  
-  // savedPosters.push(currentPoster)});
-    // for (var i = -1; i < savedPosters.length; i++) {
-    //  var savedPosterCheck = savedPosters.find((object) => object.id === currentPoster.id)
-    //  if (savedPosterCheck = undefined) { 
-      // if (currentPoster.id !== savedPosters[0].id) {
       var arrayCheck = savedPosters.find(object => object.id === currentPoster.id);
       if (arrayCheck === undefined) {
-        console.log('arrayCheck result: ', arrayCheck)
         savedPosters.push(currentPoster);
-        miniPosters.insertAdjacentHTML('afterbegin', `
+        savedPostersGrid.insertAdjacentHTML('afterbegin', `
           <div class="mini-poster">
             <img src="${currentPoster.imageURL}" alt="motivational poster image">
             <h2>${currentPoster.title}</h2>
@@ -232,7 +218,28 @@ function savePoster() {
           </div>
           `)
       };
-// }
 };
   
-      
+// create a function that will
+//1. declare a variable that stores the id of the selected poster
+// (var selectedPosterId = ???)
+// Q: how to access an element id with an event (double click) 
+// event.target??
+
+//2. declare a variable to access the clicked element by id
+// (var selectedPoster = document.getElementById(selectedPosterId))
+
+//3. add the .delete or the .hidden class to the selectedPoster variable
+// (selectedPoster.classList.add(delete)???)
+// NOTE: adding the .hidden class removes the poster from the page
+
+//4. remove the selected poster from the savedPosters array by ID number
+//
+//for loop?
+// for(var i = 0; i < savedPosters.length; i++) {
+//if(savedPosters[i].id === selectedPosterId) {
+ //savedPosters.splice(i, 1);
+
+
+
+//create an event listener that will wait for a double click and execute deletePoster function
