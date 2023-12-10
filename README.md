@@ -17,7 +17,8 @@
 5. In terminal, use the `open index.html` command to open the application in the browser
 
 ### Preview of App:
-[!screenrecording here]
+![screen-recording_V1](https://github.com/tednaphil/hang-in-there-tory/assets/76406423/844bb465-2d75-43c8-939d-f7a36a850050)
+
 
 ### Context:
 - Completing all 5 iterations of this project took about 15 hours including time to conduct research.
