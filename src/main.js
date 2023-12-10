@@ -222,10 +222,9 @@ function savePoster() {
       // if (currentPoster.id !== savedPosters[0].id) {
       var arrayCheck = savedPosters.find(object => object.id === currentPoster.id);
       if (arrayCheck === undefined) {
-        console.log('arrayCheck result: ', arrayCheck)
         savedPosters.push(currentPoster);
         savedPostersGrid.insertAdjacentHTML('afterbegin', `
-          <div class="mini-poster">
+          <div class="mini-poster" id=${currentPoster.id}>
             <img src="${currentPoster.imageURL}" alt="motivational poster image">
             <h2>${currentPoster.title}</h2>
             <h4>${currentPoster.quote}</h4>
@@ -234,5 +233,55 @@ function savePoster() {
       };
 // }
 };
+
+
+
+
+// create a function that will
+//1. declare a variable that stores the id of the selected poster
+// (var selectedPosterId = ???)
+// Q: how to access an element id with an event (double click)
+// event.target??
+//2. declare a variable to access the clicked element by id
+// (var selectedPoster = document.getElementById(selectedPosterId))
+//3. add the .delete or the .hidden class to the selectedPoster variable
+// (selectedPoster.classList.add(delete)???)
+// NOTE: adding the .hidden class removes the poster from the page
+//4. remove the selected poster from the savedPosters array by ID number
+//
+//for loop?
+// for(var i = 0; i < savedPosters.length; i++) {
+//if(savedPosters[i].id === selectedPosterId) {
+ //savedPosters.splice(i, 1);
+//create an event listener that will wait for a double click and execute deletePoster function
+
+
+
+function getID(e) {
+  if(e.target.hasAttribute('id'))
+  var idValue = e.target.getAttribute('id')
+
+  console.log('ID HERE:', idValue)
+
+  var selectedPoster = document.getElementById(`${idValue}`)
+  console.log('selectedPoster:', selectedPoster)
+  selectedPoster.classList.add('hidden')
+}
+
+// var buttonGroupPressed = e => { 
+//   if (e.target.hasAttribute('id'))
+
   
-//pseudcode here:
+//   if(!isButton) {
+//     return
+//   }
+  
+//   console.log(e.target.id);
+  
+// }
+// buttonGroup.addEventListener("click", buttonGroupPressed);
+
+
+
+
+savedPostersGrid.addEventListener('click', getID)
