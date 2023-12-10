@@ -6,6 +6,7 @@
 - The create a poster form allows a user to submit their own data (image url, quote, and title) then display a custom poster on the main section when the "Create My Poster" button is clicked. The submitted data is stored for later use in randomly generated posters.
 - Allows users to save posters and view them in the "Saved Posters" section.
 - Allows users to delete saved posters with a double click [this deletion also removes the saved poster from the SavedPoster array].
+- NOTE: user must double click the border of the poster they wish to remove
 
 
 ### Installation Instructions:
