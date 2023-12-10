@@ -128,8 +128,9 @@ makeYourOwnPosterButton.addEventListener('click', switchToForm);
 showSavedPostersButton.addEventListener('click', switchToSavedPosters);
 backToMainButton.addEventListener('click', switchToMain);
 takeMeBackButton.addEventListener('click', switchToMain);
-showMyPosterButton.addEventListener('click', handleAllEvents);
+showMyPosterButton.addEventListener('click', showMyPoster);
 saveThisPosterButton.addEventListener('click', savePoster);
+savedPostersGrid.addEventListener('dblclick', deletePoster)
 
 
 // functions and event handlers go here 👇
@@ -166,7 +167,7 @@ function pushToArrays() {
   quotes.push(currentPoster.quote)
 };
 
-function handleAllEvents() {
+function showMyPoster() {
   newPosterObject();
   switchToMain();
   event.preventDefault();
@@ -182,9 +183,7 @@ function makeRandomPoster() {
   posterTitle.innerHTML = randomTitle;
   posterImage.src = randomImage;
   currentPoster = createPoster(randomImage, randomTitle, randomQuote);
-  // console.log('currentPoster: ', currentPoster)
 };
-
 
 makeRandomPoster();
 
@@ -206,87 +205,30 @@ function switchToMain() {
   savedPostersSection.classList.add('hidden');
 };
 
-// savedPostersGrid.innerHTML = `
-//   <div class="mini-poster saved-posters-grid"> </div>
-//   `;
-  
-// var miniPosters = document.querySelector('.mini-poster');
-
-
 function savePoster() {
-  // savedPosters.forEach((object) => if (currentPoster.id !== object.id) {  
-  // savedPosters.push(currentPoster)});
-    // for (var i = -1; i < savedPosters.length; i++) {
-    //  var savedPosterCheck = savedPosters.find((object) => object.id === currentPoster.id)
-    //  if (savedPosterCheck = undefined) { 
-      // if (currentPoster.id !== savedPosters[0].id) {
-      var arrayCheck = savedPosters.find(object => object.id === currentPoster.id);
-      if (arrayCheck === undefined) {
-        savedPosters.push(currentPoster);
-        savedPostersGrid.insertAdjacentHTML('afterbegin', `
-          <div class="mini-poster" id=${currentPoster.id}>
-            <img src="${currentPoster.imageURL}" alt="motivational poster image">
-            <h2>${currentPoster.title}</h2>
-            <h4>${currentPoster.quote}</h4>
-          </div>
-          `)
-      };
-// }
+  var arrayCheck = savedPosters.find(object => object.id === currentPoster.id);
+  if (arrayCheck === undefined) {
+    savedPosters.push(currentPoster);
+    savedPostersGrid.insertAdjacentHTML(
+      'afterbegin', `
+      <div class="mini-poster" id=${currentPoster.id}>
+        <img src="${currentPoster.imageURL}" alt="motivational poster image">
+        <h2>${currentPoster.title}</h2>
+        <h4>${currentPoster.quote}</h4>
+      </div>
+    `)
+  };
 };
 
-
-
-
-// create a function that will
-//1. declare a variable that stores the id of the selected poster
-// (var selectedPosterId = ???)
-// Q: how to access an element id with an event (double click)
-// event.target??
-//2. declare a variable to access the clicked element by id
-// (var selectedPoster = document.getElementById(selectedPosterId))
-//3. add the .delete or the .hidden class to the selectedPoster variable
-// (selectedPoster.classList.add(delete)???)
-// NOTE: adding the .hidden class removes the poster from the page
-//4. remove the selected poster from the savedPosters array by ID number
-//
-//for loop?
-// for(var i = 0; i < savedPosters.length; i++) {
-//if(savedPosters[i].id === selectedPosterId) {
- //savedPosters.splice(i, 1);
-//create an event listener that will wait for a double click and execute deletePoster function
-
-
-
-function getID(e) {
+function deletePoster(e) {
   if(e.target.hasAttribute('id'))
-  var idValue = e.target.getAttribute('id')
-
-  console.log('ID HERE:', idValue)
-
-  var selectedPoster = document.getElementById(`${idValue}`)
-  console.log('selectedPoster:', selectedPoster)
-  selectedPoster.classList.add('hidden')
-
+    var idValue = e.target.getAttribute('id')
+    var selectedPoster = document.getElementById(`${idValue}`)
+    selectedPoster.classList.add('hidden')
   for (var i = 0; i < savedPosters.length; i++) {
     if (savedPosters[i].id == idValue) {
-    savedPosters.splice(i, 1)
+      savedPosters.splice(i, 1)
+    }
   }
 }
-}
-// var buttonGroupPressed = e => { 
-//   if (e.target.hasAttribute('id'))
 
-  
-//   if(!isButton) {
-//     return
-//   }
-  
-//   console.log(e.target.id);
-  
-// }
-// buttonGroup.addEventListener("click", buttonGroupPressed);
-
-
-
-
-savedPostersGrid.addEventListener('dblclick', getID)
