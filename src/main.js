@@ -266,8 +266,13 @@ function getID(e) {
   var selectedPoster = document.getElementById(`${idValue}`)
   console.log('selectedPoster:', selectedPoster)
   selectedPoster.classList.add('hidden')
-}
 
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].id == idValue) {
+    savedPosters.splice(i, 1)
+  }
+}
+}
 // var buttonGroupPressed = e => { 
 //   if (e.target.hasAttribute('id'))
 
@@ -284,4 +289,4 @@ function getID(e) {
 
 
 
-savedPostersGrid.addEventListener('click', getID)
+savedPostersGrid.addEventListener('dblclick', getID)
