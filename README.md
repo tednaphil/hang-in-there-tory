@@ -24,7 +24,7 @@
 
 ### Context:
 - Completing all 5 iterations of this project took about 15 hours including time to conduct research.
-- Both contributors are 2 weeks into Mod 1 of the Turing Front End Engineering program 
+- Both contributors are 2 weeks into learning JavaScript in the Turing Front End Engineering program 
 
 ### Contributors:
 - [Cory Sanders](https://github.com/corysanders3)
